@@ -70,12 +70,11 @@ public class CreateSceneController {
 
         MainSceneController mainSceneController = fxmlLoader.getController();
         mainSceneController.initData(store1);
-        //mainSceneController.initData(store1);
 
-        Scene mainScene = new Scene(root);
+        Scene creatNewAccountScene = new Scene(root);
         Stage stage1 = new Stage();
-        stage1.setScene(mainScene);
-        stage1.setTitle("Smart Banking - Create new Account");
+        stage1.setScene(creatNewAccountScene);
+        stage1.setTitle("Welcome to Smart Banking");
         stage1.centerOnScreen();
         //stage1.setResizable(false);
         stage1.show();
@@ -85,7 +84,7 @@ public class CreateSceneController {
         fadeTransition.setToValue(1);
         fadeTransition.playFromStart();
 
-        Stage primaryStage = (Stage) root.getScene().getWindow();
+        Stage primaryStage = (Stage) rootCreateAccount.getScene().getWindow();
         primaryStage.close();
     }
 
@@ -183,7 +182,7 @@ public class CreateSceneController {
         return false;
     }
 
-    public void error(String title , String header, String content){
+    public static void error(String title, String header, String content){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(header);

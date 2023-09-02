@@ -48,7 +48,7 @@
                </font>
             </Label>
             <TextField fx:id="txtEnterAccNum" maxWidth="-Infinity" prefHeight="24.0" prefWidth="205.0" promptText="SBA-XXXX" GridPane.columnIndex="1" />
-            <Button fx:id="btnEnterAccNum" mnemonicParsing="false" onAction="#btnEnterAccNumOnAction" text="Enter" GridPane.columnIndex="1">
+            <Button fx:id="btnEnterAccNum" defaultButton="true" mnemonicParsing="false" onAction="#btnEnterAccNumOnAction" text="Enter" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="210.0" />
                </GridPane.margin>
@@ -68,7 +68,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="txtDeposiAmount" maxWidth="-Infinity" prefHeight="24.0" prefWidth="205.0" promptText="SBA-XXXX" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="txtDeposiAmount" maxWidth="-Infinity" prefHeight="24.0" prefWidth="205.0" promptText="500 (MIN)" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Button fx:id="btnEnterDepositAmount" mnemonicParsing="false" onAction="#btnEnterDepositAmountOnAction" text="Enter" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="210.0" />

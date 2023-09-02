@@ -55,7 +55,28 @@ public class MainSceneController {
 
     }
 
-    public void btnDepositsOnAction(ActionEvent actionEvent) {
+    public void btnDepositsOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/DepositScene.fxml"));
+        AnchorPane rootDeppositScene = fxmlLoader.load();
+
+        DepositSceneController depositSceneController = fxmlLoader.getController();
+        depositSceneController.initData(store);
+
+        Scene creatNewAccountScene = new Scene(rootDeppositScene);
+        Stage stage1 = new Stage();
+        stage1.setScene(creatNewAccountScene);
+        stage1.setTitle("Smart Banking - Deposit");
+        stage1.centerOnScreen();
+        //stage1.setResizable(false);
+        stage1.show();
+
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(700),rootDeppositScene);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.playFromStart();
+
+        Stage primaryStage = (Stage) root.getScene().getWindow();
+        primaryStage.close();
     }
 
     public void btnWithdrawalsOnAction(ActionEvent actionEvent) {
