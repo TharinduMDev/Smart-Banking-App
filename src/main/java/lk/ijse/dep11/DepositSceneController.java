@@ -34,9 +34,9 @@ public class DepositSceneController {
     public Button btnBack;
     public Button btnEnterDepositAmount;
 
-    public  ArrayList<String[]> store2;
+    public static ArrayList<String[]> store2;
 
-    public String[] existIndex ;
+    public static String[] existIndex ;
 
     public void initialize(){
         lblName.setVisible(false);
@@ -54,7 +54,6 @@ public class DepositSceneController {
     }
 
     public void btnEnterAccNumOnAction(ActionEvent actionEvent) {
-        txtEnterAccNum.requestFocus();
         String accNum = txtEnterAccNum.getText().strip();
         if (accNumValidation(accNum)){
             txtEnterAccNum.selectAll();
@@ -80,7 +79,7 @@ public class DepositSceneController {
         existIndex[2] = String.valueOf(Integer.valueOf(existIndex[2]) + Integer.valueOf(depositAmount));
         lblNewBalance1.setVisible(true);
         lblNewBalance.setVisible(true);
-        lblNewBalance.setText(existIndex[2]);
+        lblNewBalance.setText("Rs:"+ existIndex[2]);
         btnDeposit.setVisible(true);
 
     }
@@ -99,7 +98,8 @@ public class DepositSceneController {
         lblNewBalance.setVisible(false);
         btnDeposit.setVisible(false);
         btnEnterDepositAmount.setVisible(false);
-        btnEnterDepositAmount.fire();
+        txtEnterAccNum.requestFocus();
+        initialize();
 
     }
 
@@ -127,7 +127,7 @@ public class DepositSceneController {
         primaryStage.close();
     }
 
-    public boolean accNumValidation(String input){
+    public static boolean accNumValidation(String input){
         if (input.isEmpty()){
             CreateSceneController.error("Input Error","Invalid Input","Account number can't be empty!");
             return  true;
@@ -149,7 +149,7 @@ public class DepositSceneController {
         return false;
     }
 
-    public boolean accNumExist(String intput){
+    public static boolean accNumExist(String intput){
 
         if(store2 == null){
             return true;
@@ -166,7 +166,7 @@ public class DepositSceneController {
 
     public boolean depositvalidation(String input){
         if (input.isEmpty()){
-            String title = "Diposit Amount Error";
+            String title = "Deposit Amount Error";
             String header = "Invalid Input";
             String content = "Deposit amount can't be empty!";
             CreateSceneController.error(title,header,content);
@@ -174,7 +174,7 @@ public class DepositSceneController {
         }
         for (int i = 0; i < input.length(); i++) {
             if(!Character.isDigit(input.charAt(i))){
-                String title = "Diposit Amount Error";
+                String title = "Deposit Amount Error";
                 String header = "Invalid Input";
                 String content = "Deposit amount should be a number!";
                 CreateSceneController.error(title,header,content);
@@ -182,7 +182,7 @@ public class DepositSceneController {
             }
         }
         if (Integer.valueOf(input) < 500){
-            String title = "Diposit Amount Error";
+            String title = "Deposit Amount Error";
             String header = "Less amount";
             String content = "Minimum initial deposit amount is Rs.500.00!";
             CreateSceneController.error(title,header,content);

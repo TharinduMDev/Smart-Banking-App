@@ -151,7 +151,7 @@ public class CreateSceneController {
 
     public boolean depositvalidation(String input){
         if (input.isEmpty()){
-            String title = "Diposit Amount Error";
+            String title = "Deposit Amount Error";
             String header = "Invalid Input";
             String content = "Deposit amount can't be empty!";
             error(title,header,content);
@@ -161,7 +161,7 @@ public class CreateSceneController {
         }
         for (int i = 0; i < input.length(); i++) {
             if(!Character.isDigit(input.charAt(i))){
-                String title = "Diposit Amount Error";
+                String title = "Deposit Amount Error";
                 String header = "Invalid Input";
                 String content = "Deposit amount should be a number!";
                 error(title,header,content);
@@ -171,7 +171,7 @@ public class CreateSceneController {
             }
         }
         if (Integer.valueOf(input) < 5000){
-            String title = "Diposit Amount Error";
+            String title = "Deposit Amount Error";
             String header = "Less amount";
             String content = "Minimum initial deposit amount is Rs.5000.00!";
             error(title,header,content);
