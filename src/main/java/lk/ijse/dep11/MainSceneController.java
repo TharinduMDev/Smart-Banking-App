@@ -127,7 +127,28 @@ public class MainSceneController {
         primaryStage.close();
     }
 
-    public void btnCheckBalanceOnAction(ActionEvent actionEvent) {
+    public void btnCheckBalanceOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/CheckBalanceScene.fxml"));
+        AnchorPane rootCheckBalance = fxmlLoader.load();
+
+        CheckBalanceSceneController checkBalanceSceneController = fxmlLoader.getController();
+        checkBalanceSceneController.initData(store);
+
+        Scene checkBalanceScene = new Scene(rootCheckBalance);
+        Stage stage1 = new Stage();
+        stage1.setScene(checkBalanceScene);
+        stage1.setTitle("Smart Banking - Check Balance");
+        stage1.centerOnScreen();
+        //stage1.setResizable(false);
+        stage1.show();
+
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(700),rootCheckBalance);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.playFromStart();
+
+        Stage primaryStage = (Stage) root.getScene().getWindow();
+        primaryStage.close();
     }
 
     public void btnDeleteAccountOnAction(ActionEvent actionEvent) {
