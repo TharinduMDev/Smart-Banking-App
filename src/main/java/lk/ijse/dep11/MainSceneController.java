@@ -151,8 +151,31 @@ public class MainSceneController {
         primaryStage.close();
     }
 
-    public void btnDeleteAccountOnAction(ActionEvent actionEvent) {
-    }
+    public void btnDeleteAccountOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/DeleteAccountScene.fxml"));
+        AnchorPane rootDeleteAccount = fxmlLoader.load();
+
+        DeleteAccountSceneController deleteAccountSceneController = fxmlLoader.getController();
+        deleteAccountSceneController.initData(store);
+
+        Scene deleteAccountScene = new Scene(rootDeleteAccount);
+        Stage stage1 = new Stage();
+        stage1.setScene(deleteAccountScene);
+        stage1.setTitle("Smart Banking - Delete Account");
+        stage1.centerOnScreen();
+        //stage1.setResizable(false);
+        stage1.show();
+
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(700),rootDeleteAccount);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.playFromStart();
+
+        Stage primaryStage = (Stage) root.getScene().getWindow();
+        primaryStage.close();
+
+
+}
 
     public void btnExitOnAction(ActionEvent actionEvent) {
         System.exit(0);

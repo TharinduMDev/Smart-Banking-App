@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootDeleteAccount" opacity="0.78" prefHeight="338.0" prefWidth="600.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.DeleteAccountSceneController">
+   <children>
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="89.0" layoutY="26.0" prefHeight="44.0" prefWidth="417.0" style="-fx-alignment: center; -fx-background-radius: 10px;" text="Delete Account" textFill="WHITE" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="26.0">
+         <font>
+            <Font name="FreeSerif Bold" size="30.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="41.0" layoutY="106.0" prefHeight="150.0" prefWidth="532.0" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="106.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="238.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="341.0" minWidth="10.0" prefWidth="265.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="199.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Enter Account Number   : ">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblName1" text="Name                              :" GridPane.rowIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCurrentAccBalance1" text="Current Account Balance:" GridPane.rowIndex="2">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtEnterAccNum" maxWidth="-Infinity" prefHeight="24.0" prefWidth="205.0" promptText="SBA-XXXX" GridPane.columnIndex="1" />
+            <Button fx:id="btnEnterAccNum" defaultButton="true" mnemonicParsing="false" onAction="#btnEnterAccNumOnAction" text="Enter" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="210.0" />
+               </GridPane.margin>
+            </Button>
+            <Label fx:id="lblName" text="Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCurrentAccBalance" text="Rs.000 000.00" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="24.0" prefWidth="61.0" text="Delete" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="205.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+      <Button fx:id="btnBack" layoutX="502.0" layoutY="344.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="24.0" prefWidth="61.0" text="Back" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="40.0" />
+      <ImageView fitHeight="90.0" fitWidth="92.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+         <image>
+            <Image url="@Image/Delete.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnDeleteAnother" layoutX="354.0" layoutY="289.0" mnemonicParsing="false" onAction="#btnDeleteAnotherOnAction" prefHeight="24.0" prefWidth="127.0" text="Delete Another" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="119.0" />
+      <Label fx:id="lblStatus" layoutX="140.0" layoutY="268.0" prefHeight="21.0" prefWidth="320.0" text="Account has been successfully deleted" textFill="RED" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
