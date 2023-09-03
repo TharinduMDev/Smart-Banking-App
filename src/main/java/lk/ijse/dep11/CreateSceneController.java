@@ -170,7 +170,7 @@ public class CreateSceneController {
                 return true;
             }
         }
-        if (Integer.valueOf(input) < 5000){
+        if (Double.valueOf(input) < 5000){
             String title = "Deposit Amount Error";
             String header = "Less amount";
             String content = "Minimum initial deposit amount is Rs.5000.00!";

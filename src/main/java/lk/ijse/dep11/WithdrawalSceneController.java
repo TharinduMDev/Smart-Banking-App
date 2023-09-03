@@ -35,7 +35,7 @@ public class WithdrawalSceneController {
 
     public static ArrayList<String[]> store3;
 
-    public static String[] existIndex;
+    public static int existIndex;
 
     public void initialize(){
         lblName.setVisible(false);
@@ -58,11 +58,11 @@ public class WithdrawalSceneController {
             txtEnterAccNum.selectAll();
             return;
         }
-        lblName.setText(existIndex[1]);
+        lblName.setText(store3.get(existIndex)[1]);
         lblName.setVisible(true);
         lblName1.setVisible(true);
         lblCurrentAccBalance1.setVisible(true);
-        lblCurrentAccBalance.setText("Rs."+ existIndex[2]);
+        lblCurrentAccBalance.setText("Rs."+ store3.get(existIndex)[2]);
         lblCurrentAccBalance.setVisible(true);
         lblWithdrawAmount1.setVisible(true);
         txtWithdrawAmount.setVisible(true);
@@ -117,16 +117,16 @@ public class WithdrawalSceneController {
             txtWithdrawAmount.requestFocus();
             return;
         }
-        if(Integer.valueOf(existIndex[2]) - Integer.valueOf(withdrawAmount) < 1000){
+        if(Double.valueOf(store3.get(existIndex)[2]) - Double.valueOf(withdrawAmount) < 1000){
             CreateSceneController.error("Input Error", "insufficient Amount", "Minimum balance after withdrawal should be Rs.1000.00 !");
             txtWithdrawAmount.requestFocus();
             txtWithdrawAmount.selectAll();
 
         }else {
-            existIndex[2] = String.valueOf(Integer.valueOf(existIndex[2]) - Integer.valueOf(withdrawAmount));
+            store3.get(existIndex)[2] = String.valueOf(Double.valueOf(store3.get(existIndex)[2]) - Double.valueOf(withdrawAmount));
             lblNewBalance1.setVisible(true);
             lblNewBalance.setVisible(true);
-            lblNewBalance.setText("Rs:" + existIndex[2]);
+            lblNewBalance.setText("Rs:" + store3.get(existIndex)[2]);
             btnWithdraw.setVisible(true);
         }
     }
@@ -163,9 +163,9 @@ public class WithdrawalSceneController {
         if(store3 == null){
             return true;
         }
-        for (String[] customer: store3) {
-            if (customer[0].equals(intput)){
-                existIndex = customer;
+        for (int i =0 ; i < store3.size() ; i++) {
+            if (store3.get(i)[0].equals(intput)){
+                existIndex = i;
                 return false;
             }
 
@@ -195,8 +195,6 @@ public class WithdrawalSceneController {
         }
         return  false;
     }
-
-
     public void initData(ArrayList<String[]> data) {
         if(data == null){
             store3 = new ArrayList<String[]>();

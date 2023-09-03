@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootTransfer" opacity="0.78" prefHeight="536.0" prefWidth="644.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.TransferSceneController">
+   <children>
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="89.0" layoutY="26.0" prefHeight="44.0" prefWidth="417.0" style="-fx-alignment: center; -fx-background-radius: 10px;" text="Transfer" textFill="WHITE" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="26.0">
+         <font>
+            <Font name="FreeSerif Bold" size="30.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="46.0" layoutY="110.0" prefHeight="360.0" prefWidth="561.0" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="110.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="275.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="341.0" minWidth="10.0" prefWidth="251.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="199.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="211.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="211.0" minHeight="9.0" prefHeight="34.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="211.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="211.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="211.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="211.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="211.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="211.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Enter From Account Number  : ">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblFromName1" prefHeight="21.0" prefWidth="272.0" text="Name                                      :" GridPane.rowIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCurrentFromAccBalance1" prefHeight="21.0" prefWidth="284.0" text="Current Account Balance        :" GridPane.rowIndex="2">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtFromAccNum" maxWidth="-Infinity" prefHeight="24.0" prefWidth="205.0" promptText="SBA-XXXX" GridPane.columnIndex="1" />
+            <Button fx:id="btnEnterFromAccNum" mnemonicParsing="false" onAction="#btnEnterFromAccNumOnAction" text="Enter" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="210.0" />
+               </GridPane.margin>
+            </Button>
+            <TextField fx:id="txtTransferAmount" maxWidth="-Infinity" prefHeight="24.0" prefWidth="205.0" promptText="100 (MIN)" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Button fx:id="btnEnterTransferAmount" mnemonicParsing="false" onAction="#btnEnterTransferAmountOnAction" text="Enter" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets left="210.0" />
+               </GridPane.margin>
+            </Button>
+            <Label fx:id="lblFromName" text="Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCurrentFromAccBalance" text="Rs.balance.00" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTransferAmount1" prefHeight="21.0" prefWidth="279.0" text="Transfer Amount                     : " GridPane.rowIndex="8">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblFromNewBalance1" text="New From Account Balance    :" GridPane.rowIndex="9">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblFromNewBalance" text="Rs.balance.00" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtToAccNum" maxWidth="-Infinity" prefHeight="24.0" prefWidth="205.0" promptText="SBA-XXXX" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="lblCurrentToAccBalance1" prefHeight="21.0" prefWidth="286.0" text="Current Account Balance        :" GridPane.rowIndex="6">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblToName1" prefHeight="21.0" prefWidth="281.0" text="Name                                      :" GridPane.rowIndex="5">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblToAccNum" text="Enter To Account Number       : " GridPane.rowIndex="4">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCurrentToAccBalance" text="Rs.balance.00" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblToName" text="Name" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnEnterToAccNum" mnemonicParsing="false" onAction="#btnEnterToAccNumOnAction" text="Enter" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="210.0" />
+               </GridPane.margin>
+            </Button>
+            <Label fx:id="lblToNewBalance1" text="New To Account Balance        :" GridPane.rowIndex="10">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblToNewBalance" text="Rs.balance.00" GridPane.columnIndex="1" GridPane.rowIndex="10">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <Button fx:id="btnTransferAgain" layoutX="392.0" layoutY="344.0" mnemonicParsing="false" onAction="#btnTransferAgainOnAction" text="Withdraw Again" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="101.0" />
+      <Button fx:id="btnBack" layoutX="502.0" layoutY="344.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="24.0" prefWidth="54.0" text="Back" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="40.0" />
+      <ImageView fitHeight="102.0" fitWidth="115.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Image/transfer.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

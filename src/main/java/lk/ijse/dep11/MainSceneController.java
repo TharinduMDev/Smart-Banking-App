@@ -103,7 +103,28 @@ public class MainSceneController {
         primaryStage.close();
     }
 
-    public void btnTransferOnAction(ActionEvent actionEvent) {
+    public void btnTransferOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/TransferScene.fxml"));
+        AnchorPane rootWithdraw = fxmlLoader.load();
+
+        TransferSceneController transferSceneController = fxmlLoader.getController();
+        transferSceneController.initData(store);
+
+        Scene creatNewAccountScene = new Scene(rootWithdraw);
+        Stage stage1 = new Stage();
+        stage1.setScene(creatNewAccountScene);
+        stage1.setTitle("Smart Banking - Transfer");
+        stage1.centerOnScreen();
+        //stage1.setResizable(false);
+        stage1.show();
+
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(700),rootWithdraw);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.playFromStart();
+
+        Stage primaryStage = (Stage) root.getScene().getWindow();
+        primaryStage.close();
     }
 
     public void btnCheckBalanceOnAction(ActionEvent actionEvent) {

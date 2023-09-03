@@ -36,7 +36,7 @@ public class DepositSceneController {
 
     public static ArrayList<String[]> store2;
 
-    public static String[] existIndex ;
+    public static int existIndex ;
 
     public void initialize(){
         lblName.setVisible(false);
@@ -59,11 +59,11 @@ public class DepositSceneController {
             txtEnterAccNum.selectAll();
             return;
         }
-        lblName.setText(existIndex[1]);
+        lblName.setText(store2.get(existIndex)[1]);
         lblName.setVisible(true);
         lblEnterName.setVisible(true);
         lblCurentAccBalance1.setVisible(true);
-        lblCurrentAccBalance.setText("Rs."+existIndex[2]);
+        lblCurrentAccBalance.setText("Rs."+store2.get(existIndex)[2]);
         lblCurrentAccBalance.setVisible(true);
         lblDepositAmount1.setVisible(true);
         txtDeposiAmount.setVisible(true);
@@ -76,10 +76,10 @@ public class DepositSceneController {
             txtDeposiAmount.requestFocus();
             return;
         }
-        existIndex[2] = String.valueOf(Integer.valueOf(existIndex[2]) + Integer.valueOf(depositAmount));
+        store2.get(existIndex)[2] = String.valueOf(Double.valueOf(store2.get(existIndex)[2]) + Double.valueOf(depositAmount));
         lblNewBalance1.setVisible(true);
         lblNewBalance.setVisible(true);
-        lblNewBalance.setText("Rs:"+ existIndex[2]);
+        lblNewBalance.setText("Rs:"+ store2.get(existIndex)[2]);
         btnDeposit.setVisible(true);
 
     }
@@ -99,7 +99,7 @@ public class DepositSceneController {
         btnDeposit.setVisible(false);
         btnEnterDepositAmount.setVisible(false);
         txtEnterAccNum.requestFocus();
-        initialize();
+        //initialize();
 
     }
 
@@ -154,9 +154,9 @@ public class DepositSceneController {
         if(store2 == null){
             return true;
         }
-        for (String[] customer: store2) {
-            if (customer[0].equals(intput)){
-                existIndex = customer;
+        for (int i = 0 ; i < store2.size() ; i++) {
+            if (store2.get(i)[0].equals(intput)){
+                existIndex = i;
                 return false;
             }
 
