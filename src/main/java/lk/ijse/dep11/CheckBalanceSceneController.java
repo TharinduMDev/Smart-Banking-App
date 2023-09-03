@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -28,11 +29,15 @@ public class CheckBalanceSceneController {
     public static ArrayList<String[]> store5;
 
     public static int existIndex ;
+    public Button btnCheckAnother;
 
     public void initialize(){
+        btnEnterAccNum.setDisable(false);
         lblName.setDisable(true);
         lblCurrentAccBalance.setDisable(true);
+        btnCheckAnother.setDisable(true);
         txtEnterAccNum.requestFocus();
+
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
@@ -66,14 +71,12 @@ public class CheckBalanceSceneController {
             return;
         }
         lblName.setText(store5.get(existIndex)[1]);
-//        lblName.setVisible(true);
         lblName.setDisable(false);
-//        lblCurentAccBalance1.setVisible(true);
         lblCurrentAccBalance.setText(String.format("Rs.%.2f",Double.valueOf(store5.get(existIndex)[2])));
         lblCurrentAccBalance.setDisable(false);
-//        lblDepositAmount1.setVisible(true);
-//        txtDeposiAmount.setVisible(true);
-//        btnEnterDepositAmount.setVisible(true);
+        btnCheckAnother.setDisable(false);
+        btnCheckAnother.requestFocus();
+
     }
 
     public static boolean accNumValidation(String input){
@@ -103,7 +106,9 @@ public class CheckBalanceSceneController {
             return true;
         }
         for (int i = 0 ; i < store5.size() ; i++) {
-            if (store5.get(i)[0].equals(intput)){
+            if (store5.get(i)[0] == null)continue;
+
+            else if (store5.get(i)[0].equals(intput)){
                 existIndex = i;
                 return false;
             }
@@ -117,5 +122,15 @@ public class CheckBalanceSceneController {
         if(data == null){
             store5 = new ArrayList<String[]>();
         }store5 = data;
+    }
+
+    public void txtEnterAccNumOnKeyPressed(KeyEvent keyEvent) {
+    }
+
+    public void btnCheckAnotherOnAction(ActionEvent actionEvent) {
+        txtEnterAccNum.clear();
+        lblName.setText("Name");
+        lblCurrentAccBalance.setText("Rs.000,000.00");
+        initialize();
     }
 }

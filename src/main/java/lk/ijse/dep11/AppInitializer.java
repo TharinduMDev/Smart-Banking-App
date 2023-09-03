@@ -4,7 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class AppInitializer extends Application {
 
@@ -15,13 +18,17 @@ public class AppInitializer extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/MainScene.fxml"));
-        Scene mainScene = new Scene(root);
-        primaryStage.setScene(mainScene);
-        primaryStage.setTitle("Welcome to Smart Banking");
-        primaryStage.centerOnScreen();
-        primaryStage.setResizable(false);
-        primaryStage.show();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/view/SplashScene.fxml"));
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+
+        Stage stage = new Stage(StageStyle.TRANSPARENT);
+        root.setBackground(Background.fill(Color.TRANSPARENT));
+        stage.setScene(scene);
+        stage.setTitle("Smart Banking");
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.show();
 
     }
 }

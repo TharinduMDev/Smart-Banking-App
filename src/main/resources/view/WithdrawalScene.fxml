@@ -47,13 +47,13 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="txtEnterAccNum" maxWidth="-Infinity" prefHeight="24.0" prefWidth="205.0" promptText="SBA-XXXX" GridPane.columnIndex="1" />
-            <Button fx:id="btnEnterAccNum" defaultButton="true" mnemonicParsing="false" onAction="#btnEnterAccNumOnAction" text="Enter" GridPane.columnIndex="1">
+            <TextField fx:id="txtEnterAccNum" maxWidth="-Infinity" onKeyPressed="#txtEnterAccNumOnKeyPressed" prefHeight="24.0" prefWidth="205.0" promptText="SBA-XXXX" GridPane.columnIndex="1" />
+            <Button fx:id="btnEnterAccNum" mnemonicParsing="false" onAction="#btnEnterAccNumOnAction" text="Enter" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="210.0" />
                </GridPane.margin>
             </Button>
-            <TextField fx:id="txtWithdrawAmount" maxWidth="-Infinity" prefHeight="24.0" prefWidth="205.0" promptText="100 (MIN)" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="txtWithdrawAmount" maxWidth="-Infinity" onKeyPressed="#txtWithdrawAmountOnKeyPressed" prefHeight="24.0" prefWidth="205.0" promptText="100 (MIN)" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Button fx:id="btnEnterWithdrawAmount" mnemonicParsing="false" onAction="#btnEnterWithdrawAmountOnAction" text="Enter" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="210.0" />
@@ -64,7 +64,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblCurrentAccBalance" text="Rs.balance.00" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="lblCurrentAccBalance" text="Rs.000,000.00" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="15.0" />
                </font>
@@ -79,7 +79,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label fx:id="lblNewBalance" text="Rs.balance.00" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="lblNewBalance" text="Rs.000,000.00" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="15.0" />
                </font>

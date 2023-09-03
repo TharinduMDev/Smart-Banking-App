@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="rootSplash" prefHeight="412.0" prefWidth="600.0" style="-fx-background-color: light green;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.SplashSceneController">
+   <children>
+      <ImageView fx:id="imgIcon" blendMode="GREEN" fitHeight="169.0" fitWidth="170.0" layoutX="216.0" layoutY="61.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Image/splash.png" />
+         </image>
+      </ImageView>
+      <ImageView blendMode="GREEN" fitHeight="76.0" fitWidth="82.0" layoutX="265.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Image/loadingSplash.gif" />
+         </image>
+      </ImageView>
+      <Label layoutX="167.0" layoutY="14.0" style="-fx-alignment: center;" text="Smart Banking" textFill="#18ee71">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblLoading" layoutX="53.0" layoutY="334.0" prefHeight="19.0" prefWidth="499.0" style="-fx-alignment: center;" text="Loading" textFill="#18ee71">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -48,24 +50,23 @@ public class TransferSceneController {
     public static ArrayList<String[]> store4 = new ArrayList<>();
 
     public void initialize(){
-        lblFromName.setVisible(false);
-        lblFromName1.setVisible(false);
-        lblCurrentFromAccBalance.setVisible(false);
-        lblCurrentFromAccBalance1.setVisible(false);
-        lblToAccNum.setVisible(false);
-        txtToAccNum.setVisible(false);
-        btnEnterToAccNum.setVisible(false);
-        lblToName1.setVisible(false);
-        lblToName.setVisible(false);
-        lblCurrentToAccBalance1.setVisible(false);
-        lblCurrentToAccBalance.setVisible(false);
-        lblTransferAmount1.setVisible(false);
-        txtTransferAmount.setVisible(false);
-        btnEnterTransferAmount.setVisible(false);
-        lblFromNewBalance1.setVisible(false);
-        lblFromNewBalance.setVisible(false);
-        lblToNewBalance.setVisible(false);
-        lblToNewBalance1.setVisible(false);
+
+        btnEnterFromAccNum.setDisable(false);
+        lblFromName.setDisable(true);
+        lblCurrentFromAccBalance.setDisable(true);
+
+        txtToAccNum.setDisable(true);
+        lblToName.setDisable(true);
+        lblCurrentToAccBalance.setDisable(true);
+        btnEnterToAccNum.setDisable(true);
+
+        btnEnterTransferAmount.setDisable(true);
+        txtTransferAmount.setDisable(true);
+        lblFromNewBalance.setDisable(true);
+        lblToNewBalance.setDisable(true);
+
+        btnTransferAgain.setDisable(true);
+
         txtFromAccNum.requestFocus();
 
     }
@@ -78,14 +79,12 @@ public class TransferSceneController {
         }
         fromAccExistIndex = existIndex;
         lblFromName.setText(store4.get(fromAccExistIndex)[1]);
-        lblFromName1.setVisible(true);
-        lblFromName.setVisible(true);
-        lblCurrentFromAccBalance1.setVisible(true);
-        lblCurrentFromAccBalance.setText("Rs."+ store4.get(fromAccExistIndex)[2]);
-        lblCurrentFromAccBalance.setVisible(true);
-        lblToAccNum.setVisible(true);
-        txtToAccNum.setVisible(true);
-        btnEnterToAccNum.setVisible(true);
+        lblFromName.setDisable(false);
+        lblCurrentFromAccBalance.setText(String.format("Rs.%,.2f",Double.valueOf(store4.get(fromAccExistIndex)[2])));
+        lblCurrentFromAccBalance.setDisable(false);
+        txtToAccNum.setDisable(false);
+        btnEnterToAccNum.setDisable(false);
+        txtToAccNum.requestFocus();
 
     }
 
@@ -104,14 +103,13 @@ public class TransferSceneController {
             return;
         }
         lblToName.setText(store4.get(toAccExistIndex)[1]);
-        lblToName1.setVisible(true);
-        lblToName.setVisible(true);
-        lblCurrentToAccBalance1.setVisible(true);
-        lblCurrentToAccBalance.setText("Rs."+ store4.get(toAccExistIndex)[2]);
-        lblCurrentToAccBalance.setVisible(true);
-        lblTransferAmount1.setVisible(true);
-        txtTransferAmount.setVisible(true);
-        btnEnterTransferAmount.setVisible(true);
+        lblToName.setDisable(false);
+        lblCurrentToAccBalance.setText(String.format("Rs.%,.2f",Double.valueOf(store4.get(toAccExistIndex)[2])));
+        lblCurrentToAccBalance.setDisable(false);
+
+        txtTransferAmount.setDisable(false);
+        btnEnterTransferAmount.setDisable(false);
+        txtTransferAmount.requestFocus();
     }
 
     public void btnEnterTransferAmountOnAction(ActionEvent actionEvent) {
@@ -129,43 +127,32 @@ public class TransferSceneController {
             store4.get(toAccExistIndex)[2] = String.valueOf(Double.valueOf(store4.get(toAccExistIndex)[2]) + Double.valueOf(transferAmount));
             store4.get(fromAccExistIndex)[2] = String.valueOf(Double.valueOf(store4.get(fromAccExistIndex)[2]) - Double.valueOf(transferAmount)*1.02);
 
-            lblFromNewBalance1.setVisible(true);
-            lblFromNewBalance.setVisible(true);
-            lblFromNewBalance.setText("Rs:" + store4.get(fromAccExistIndex)[2]);
-            lblToNewBalance1.setVisible(true);
-            lblToNewBalance.setVisible(true);
-            lblToNewBalance.setText("Rs:" + store4.get(toAccExistIndex)[2]);
-            btnTransferAgain.setVisible(true);
+            lblFromNewBalance.setDisable(false);
+            lblFromNewBalance.setText(String.format("Rs.%,.2f",Double.valueOf(store4.get(fromAccExistIndex)[2])));
+            lblToNewBalance.setDisable(false);
+            lblToNewBalance.setText(String.format("Rs.%,.2f",Double.valueOf(store4.get(toAccExistIndex)[2])));
+            btnTransferAgain.setDisable(false);
+            btnTransferAgain.requestFocus();
         }
     }
 
     public void btnTransferAgainOnAction(ActionEvent actionEvent) {
+        txtFromAccNum.clear();
+        lblFromName.setText("Name");
+        lblCurrentFromAccBalance.setText("Rs.000,000.00");
 
         txtToAccNum.clear();
-        txtFromAccNum.clear();
+        txtToAccNum.promptTextProperty();
+        lblToName.setText("Name");
+        lblCurrentToAccBalance.setText("Rs.000,000.00");
+
         txtTransferAmount.clear();
+        txtTransferAmount.promptTextProperty();
+        lblFromNewBalance.setText("Rs.000,000.00");
+        lblToNewBalance.setText("Rs.000,000.00");
 
-        lblFromName.setVisible(false);
-        lblFromName1.setVisible(false);
-        lblCurrentFromAccBalance.setVisible(false);
-        lblCurrentFromAccBalance1.setVisible(false);
-        lblToAccNum.setVisible(false);
-        txtToAccNum.setVisible(false);
-        btnEnterToAccNum.setVisible(false);
-        lblToName1.setVisible(false);
-        lblToName.setVisible(false);
-        lblCurrentToAccBalance1.setVisible(false);
-        lblCurrentToAccBalance.setVisible(false);
-        lblTransferAmount1.setVisible(false);
-        txtTransferAmount.setVisible(false);
-        btnEnterTransferAmount.setVisible(false);
-        lblFromNewBalance1.setVisible(false);
-        lblFromNewBalance.setVisible(false);
-        lblToNewBalance.setVisible(false);
-        lblToNewBalance1.setVisible(false);
-        txtFromAccNum.requestFocus();
+        initialize();
 
-        //initialize();
     }
 
     public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
@@ -220,7 +207,8 @@ public class TransferSceneController {
             return true;
         }
         for (int i=0 ; i < store4.size() ; i++) {
-            if (store4.get(i)[0].equals(intput)){
+            if (store4.get(i)[0] == null) continue;
+            else if (store4.get(i)[0].equals(intput)){
                 existIndex = i;
 
                 return false;
@@ -262,5 +250,17 @@ public class TransferSceneController {
             store4 = new ArrayList<String[]>();
         }
         store4 = data;
+    }
+
+    public void txtFromAccNumOnKeyPressed(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ENTER)btnEnterFromAccNum.fire();
+    }
+
+    public void txtTransferAmountOnKeyPressed(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ENTER)btnEnterTransferAmount.fire();
+    }
+
+    public void txtToAccNumOnKeyPressed(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ENTER)btnEnterToAccNum.fire();
     }
 }

@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -38,16 +40,13 @@ public class WithdrawalSceneController {
     public static int existIndex;
 
     public void initialize(){
-        lblName.setVisible(false);
-        lblName1.setVisible(false);
-        lblCurrentAccBalance1.setVisible(false);
-        lblCurrentAccBalance.setVisible(false);
-        lblWithdrawAmount1.setVisible(false);
-        txtWithdrawAmount.setVisible(false);
-        lblNewBalance1.setVisible(false);
-        lblNewBalance.setVisible(false);
-        btnWithdraw.setVisible(false);
-        btnEnterWithdrawAmount.setVisible(false);
+        btnEnterAccNum.setDisable(false);
+        lblName.setDisable(true);
+        lblCurrentAccBalance.setDisable(true);
+        txtWithdrawAmount.setDisable(true);
+        lblNewBalance.setDisable(true);
+        btnWithdraw.setDisable(true);
+        btnEnterWithdrawAmount.setDisable(true);
         txtEnterAccNum.requestFocus();
 
     }
@@ -59,31 +58,22 @@ public class WithdrawalSceneController {
             return;
         }
         lblName.setText(store3.get(existIndex)[1]);
-        lblName.setVisible(true);
-        lblName1.setVisible(true);
+        lblName.setDisable(false);
         lblCurrentAccBalance1.setVisible(true);
-        lblCurrentAccBalance.setText("Rs."+ store3.get(existIndex)[2]);
-        lblCurrentAccBalance.setVisible(true);
-        lblWithdrawAmount1.setVisible(true);
-        txtWithdrawAmount.setVisible(true);
-        btnEnterWithdrawAmount.setVisible(true);
+        lblCurrentAccBalance.setText(String.format("Rs.%,.2f",Double.valueOf(store3.get(existIndex)[2])));
+        lblCurrentAccBalance.setDisable(false);
+        txtWithdrawAmount.setDisable(false);
+        btnEnterWithdrawAmount.setDisable(false);
+        txtWithdrawAmount.requestFocus();
     }
 
 
     public void btnWithdrawOnAction(ActionEvent actionEvent) {
-        txtEnterAccNum.clear();
         txtWithdrawAmount.clear();
-        lblName.setVisible(false);
-        lblName1.setVisible(false);
-        lblCurrentAccBalance1.setVisible(false);
-        lblCurrentAccBalance.setVisible(false);
-        lblWithdrawAmount1.setVisible(false);
-        txtWithdrawAmount.setVisible(false);
-        lblNewBalance1.setVisible(false);
-        lblNewBalance.setVisible(false);
-        btnWithdraw.setVisible(false);
-        btnEnterWithdrawAmount.setVisible(false);
-        txtEnterAccNum.requestFocus();
+        txtWithdrawAmount.promptTextProperty();
+        lblName.setText("Name");
+        lblCurrentAccBalance.setText("Rs.000,000.00");
+        lblNewBalance.setText("Rs.000,000.00");
         initialize();
     }
 
@@ -124,10 +114,13 @@ public class WithdrawalSceneController {
 
         }else {
             store3.get(existIndex)[2] = String.valueOf(Double.valueOf(store3.get(existIndex)[2]) - Double.valueOf(withdrawAmount));
-            lblNewBalance1.setVisible(true);
-            lblNewBalance.setVisible(true);
-            lblNewBalance.setText("Rs:" + store3.get(existIndex)[2]);
-            btnWithdraw.setVisible(true);
+            lblNewBalance1.setDisable(false);
+            lblNewBalance.setDisable(false);
+            lblNewBalance.setText(String.format("Rs.%,.2f",Double.valueOf(store3.get(existIndex)[2])));
+            btnWithdraw.setDisable(false);
+            btnEnterAccNum.setDisable(true);
+            btnEnterWithdrawAmount.setDisable(true);
+            btnWithdraw.requestFocus();
         }
     }
 
@@ -164,7 +157,8 @@ public class WithdrawalSceneController {
             return true;
         }
         for (int i =0 ; i < store3.size() ; i++) {
-            if (store3.get(i)[0].equals(intput)){
+            if (store3.get(i)[0]== null)continue;
+            else if (store3.get(i)[0].equals(intput)){
                 existIndex = i;
                 return false;
             }
@@ -200,5 +194,15 @@ public class WithdrawalSceneController {
             store3 = new ArrayList<String[]>();
         }
         store3 = data;
+    }
+
+    public void txtEnterAccNumOnKeyPressed(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ENTER)btnEnterAccNum.fire();
+    }
+
+    public void txtWithdrawAmountOnKeyPressed(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            btnEnterWithdrawAmount.fire();
+        }
     }
 }

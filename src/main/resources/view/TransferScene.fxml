@@ -53,13 +53,13 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="txtFromAccNum" maxWidth="-Infinity" prefHeight="24.0" prefWidth="205.0" promptText="SBA-XXXX" GridPane.columnIndex="1" />
+            <TextField fx:id="txtFromAccNum" maxWidth="-Infinity" onKeyPressed="#txtFromAccNumOnKeyPressed" prefHeight="24.0" prefWidth="205.0" promptText="SBA-XXXX" GridPane.columnIndex="1" />
             <Button fx:id="btnEnterFromAccNum" mnemonicParsing="false" onAction="#btnEnterFromAccNumOnAction" text="Enter" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="210.0" />
                </GridPane.margin>
             </Button>
-            <TextField fx:id="txtTransferAmount" maxWidth="-Infinity" prefHeight="24.0" prefWidth="205.0" promptText="100 (MIN)" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField fx:id="txtTransferAmount" maxWidth="-Infinity" onKeyPressed="#txtTransferAmountOnKeyPressed" prefHeight="24.0" prefWidth="205.0" promptText="100 (MIN)" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <Button fx:id="btnEnterTransferAmount" mnemonicParsing="false" onAction="#btnEnterTransferAmountOnAction" text="Enter" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <GridPane.margin>
                   <Insets left="210.0" />
@@ -70,7 +70,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblCurrentFromAccBalance" text="Rs.balance.00" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="lblCurrentFromAccBalance" text="Rs.000,000.00" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="15.0" />
                </font>
@@ -85,12 +85,12 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label fx:id="lblFromNewBalance" text="Rs.balance.00" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <Label fx:id="lblFromNewBalance" text="Rs.000,000.00" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtToAccNum" maxWidth="-Infinity" prefHeight="24.0" prefWidth="205.0" promptText="SBA-XXXX" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="txtToAccNum" maxWidth="-Infinity" onKeyPressed="#txtToAccNumOnKeyPressed" prefHeight="24.0" prefWidth="205.0" promptText="SBA-XXXX" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label fx:id="lblCurrentToAccBalance1" prefHeight="21.0" prefWidth="286.0" text="Current Account Balance        :" GridPane.rowIndex="6">
                <font>
                   <Font size="17.0" />
@@ -106,7 +106,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label fx:id="lblCurrentToAccBalance" text="Rs.balance.00" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Label fx:id="lblCurrentToAccBalance" text="Rs.000,000.00" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
                   <Font size="15.0" />
                </font>
@@ -126,14 +126,14 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label fx:id="lblToNewBalance" text="Rs.balance.00" GridPane.columnIndex="1" GridPane.rowIndex="10">
+            <Label fx:id="lblToNewBalance" text="Rs.000,000.00" GridPane.columnIndex="1" GridPane.rowIndex="10">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
          </children>
       </GridPane>
-      <Button fx:id="btnTransferAgain" layoutX="392.0" layoutY="344.0" mnemonicParsing="false" onAction="#btnTransferAgainOnAction" text="Withdraw Again" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="101.0" />
+      <Button fx:id="btnTransferAgain" layoutX="392.0" layoutY="344.0" mnemonicParsing="false" onAction="#btnTransferAgainOnAction" text="Transfer Again" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="101.0" />
       <Button fx:id="btnBack" layoutX="502.0" layoutY="344.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="24.0" prefWidth="54.0" text="Back" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="40.0" />
       <ImageView fitHeight="102.0" fitWidth="115.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>

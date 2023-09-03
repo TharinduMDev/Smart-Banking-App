@@ -45,15 +45,11 @@ public class DeleteAccountSceneController {
             return;
         }
         lblName.setText(store6.get(existIndex)[1]);
-//        lblName.setVisible(true);
         lblName.setDisable(false);
-//        lblCurentAccBalance1.setVisible(true);
-        lblCurrentAccBalance.setText(String.format("Rs.%.2f",Double.valueOf(store6.get(existIndex)[2])));
+        lblCurrentAccBalance.setText(String.format("Rs.%,.2f",Double.valueOf(store6.get(existIndex)[2])));
         lblCurrentAccBalance.setDisable(false);
         btnDelete.setDisable(false);
-//        lblDepositAmount1.setVisible(true);
-//        txtDeposiAmount.setVisible(true);
-//        btnEnterDepositAmount.setVisible(true);
+        btnDelete.requestFocus();
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) throws IOException {
@@ -68,7 +64,8 @@ public class DeleteAccountSceneController {
 
             lblStatus.setVisible(true);
             btnDeleteAnother.setDisable(false);
-            store6.set(existIndex,new String[0]);
+            String[] deletePosition = new String[1];
+            store6.set(existIndex,deletePosition);
             btnDelete.setDisable(true);
 
 
@@ -100,6 +97,10 @@ public class DeleteAccountSceneController {
     }
 
     public void btnDeleteAnotherOnAction(ActionEvent actionEvent) {
+        txtEnterAccNum.clear();
+        txtEnterAccNum.promptTextProperty();
+        lblName.setText("Name");
+        lblCurrentAccBalance.setText("Rs.000,000.00");
         initialize();
     }
 
@@ -130,7 +131,8 @@ public class DeleteAccountSceneController {
             return true;
         }
         for (int i = 0 ; i < store6.size() ; i++) {
-            if (store6.get(i)[0].equals(input)){
+            if(store6.get(i)[0] == null) continue;
+            else if (store6.get(i)[0].equals(input)){
                 existIndex = i;
                 return false;
             }

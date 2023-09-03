@@ -9,6 +9,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -195,5 +197,14 @@ public class CreateSceneController {
             store1 = new ArrayList<String[]>();
         }else store1 = data;
     }
+
+    public void txtNameOnKeyPressed(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ENTER)txtInitialDeposit.requestFocus();
+    }
+
+    public void txtInitialDepositOnKeyPressed(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ENTER)btnSave.fire();
+    }
+
 
 }

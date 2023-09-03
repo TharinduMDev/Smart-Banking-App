@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -39,16 +41,13 @@ public class DepositSceneController {
     public static int existIndex ;
 
     public void initialize(){
-        lblName.setVisible(false);
-        lblEnterName.setVisible(false);
-        lblCurentAccBalance1.setVisible(false);
-        lblCurrentAccBalance.setVisible(false);
-        lblDepositAmount1.setVisible(false);
-        txtDeposiAmount.setVisible(false);
-        lblNewBalance1.setVisible(false);
-        lblNewBalance.setVisible(false);
-        btnDeposit.setVisible(false);
-        btnEnterDepositAmount.setVisible(false);
+        btnEnterAccNum.setDisable(false);
+        lblName.setDisable(true);
+        lblCurrentAccBalance.setDisable(true);
+        txtDeposiAmount.setDisable(true);
+        lblNewBalance.setDisable(true);
+        btnDeposit.setDisable(true);
+        btnEnterDepositAmount.setDisable(true);
         txtEnterAccNum.requestFocus();
 
     }
@@ -60,14 +59,12 @@ public class DepositSceneController {
             return;
         }
         lblName.setText(store2.get(existIndex)[1]);
-        lblName.setVisible(true);
-        lblEnterName.setVisible(true);
-        lblCurentAccBalance1.setVisible(true);
-        lblCurrentAccBalance.setText("Rs."+store2.get(existIndex)[2]);
-        lblCurrentAccBalance.setVisible(true);
-        lblDepositAmount1.setVisible(true);
-        txtDeposiAmount.setVisible(true);
-        btnEnterDepositAmount.setVisible(true);
+        lblName.setDisable(false);
+        lblCurrentAccBalance.setText(String.format("Rs.%,.2f",Double.valueOf(store2.get(existIndex)[2])));
+        lblCurrentAccBalance.setDisable(false);
+        txtDeposiAmount.setDisable(false);
+        btnEnterDepositAmount.setDisable(false);
+        txtDeposiAmount.requestFocus();
     }
 
     public void btnEnterDepositAmountOnAction(ActionEvent actionEvent) {
@@ -77,29 +74,23 @@ public class DepositSceneController {
             return;
         }
         store2.get(existIndex)[2] = String.valueOf(Double.valueOf(store2.get(existIndex)[2]) + Double.valueOf(depositAmount));
-        lblNewBalance1.setVisible(true);
-        lblNewBalance.setVisible(true);
-        lblNewBalance.setText("Rs:"+ store2.get(existIndex)[2]);
-        btnDeposit.setVisible(true);
+        lblNewBalance1.setDisable(false);
+        lblNewBalance.setDisable(false);
+        lblNewBalance.setText(String.format("Rs.%,.2f",Double.valueOf(store2.get(existIndex)[2])));
+        btnDeposit.setDisable(false);
+        btnEnterAccNum.setDisable(true);
+        btnEnterDepositAmount.setDisable(true);
+        btnDeposit.requestFocus();
 
     }
 
     public void btnDepositOnAction(ActionEvent actionEvent) {
-       // btnDeposit.setDisable(true);
-        txtEnterAccNum.clear();
         txtDeposiAmount.clear();
-        lblName.setVisible(false);
-        lblEnterName.setVisible(false);
-        lblCurentAccBalance1.setVisible(false);
-        lblCurrentAccBalance.setVisible(false);
-        lblDepositAmount1.setVisible(false);
-        txtDeposiAmount.setVisible(false);
-        lblNewBalance1.setVisible(false);
-        lblNewBalance.setVisible(false);
-        btnDeposit.setVisible(false);
-        btnEnterDepositAmount.setVisible(false);
-        txtEnterAccNum.requestFocus();
-        //initialize();
+        txtDeposiAmount.promptTextProperty();
+        lblName.setText("Name");
+        lblCurrentAccBalance.setText("Rs.000,000.00");
+        lblNewBalance.setText("Rs.000,000.00");
+        initialize();
 
     }
 
@@ -155,7 +146,8 @@ public class DepositSceneController {
             return true;
         }
         for (int i = 0 ; i < store2.size() ; i++) {
-            if (store2.get(i)[0].equals(intput)){
+            if (store2.get(i)[0] == null) continue;
+            else if (store2.get(i)[0].equals(intput)){
                 existIndex = i;
                 return false;
             }
@@ -196,5 +188,15 @@ public class DepositSceneController {
             store2 = new ArrayList<String[]>();
         }
         store2 = data;
+    }
+
+    public void txtDeposiAmountOnKeyPressed(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ENTER){
+            btnEnterDepositAmount.fire();
+        }
+    }
+
+    public void txtEnterAccNumOnKeyPressed(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ENTER)btnEnterAccNum.fire();
     }
 }
