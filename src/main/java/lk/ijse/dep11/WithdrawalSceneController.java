@@ -117,11 +117,18 @@ public class WithdrawalSceneController {
             txtWithdrawAmount.requestFocus();
             return;
         }
-        existIndex[2] = String.valueOf(Integer.valueOf(existIndex[2]) - Integer.valueOf(withdrawAmount));
-        lblNewBalance1.setVisible(true);
-        lblNewBalance.setVisible(true);
-        lblNewBalance.setText("Rs:"+ existIndex[2]);
-        btnWithdraw.setVisible(true);
+        if(Integer.valueOf(existIndex[2]) - Integer.valueOf(withdrawAmount) < 1000){
+            CreateSceneController.error("Input Error", "insufficient Amount", "Minimum balance after withdrawal should be Rs.1000.00 !");
+            txtWithdrawAmount.requestFocus();
+            txtWithdrawAmount.selectAll();
+
+        }else {
+            existIndex[2] = String.valueOf(Integer.valueOf(existIndex[2]) - Integer.valueOf(withdrawAmount));
+            lblNewBalance1.setVisible(true);
+            lblNewBalance.setVisible(true);
+            lblNewBalance.setText("Rs:" + existIndex[2]);
+            btnWithdraw.setVisible(true);
+        }
     }
 
     public boolean WithdrawValidation(String input){
