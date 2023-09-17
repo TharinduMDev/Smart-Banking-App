@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.dep11.CreateSceneController.*;
 
-
+import  lk.ijse.dep11.CreateSceneController.*;
 
 public class DepositSceneController {
     public AnchorPane rootDeposit;
@@ -70,6 +70,7 @@ public class DepositSceneController {
     public void btnEnterDepositAmountOnAction(ActionEvent actionEvent) {
         String depositAmount = txtDeposiAmount.getText().strip();
         if(depositvalidation(depositAmount)){
+            txtDeposiAmount.selectAll();
             txtDeposiAmount.requestFocus();
             return;
         }
@@ -77,6 +78,7 @@ public class DepositSceneController {
         lblNewBalance1.setDisable(false);
         lblNewBalance.setDisable(false);
         lblNewBalance.setText(String.format("Rs.%,.2f",Double.valueOf(store2.get(existIndex)[2])));
+        CreateSceneController.informationAlert("Information","Successful","Successfully Deposited!");
         btnDeposit.setDisable(false);
         btnEnterAccNum.setDisable(true);
         btnEnterDepositAmount.setDisable(true);
@@ -176,7 +178,7 @@ public class DepositSceneController {
         if (Integer.valueOf(input) < 500){
             String title = "Deposit Amount Error";
             String header = "Less amount";
-            String content = "Minimum initial deposit amount is Rs.500.00!";
+            String content = "Minimum deposit amount is Rs.500.00!";
             CreateSceneController.error(title,header,content);
             return true;
         }

@@ -15,6 +15,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import lk.ijse.dep11.CreateSceneController.*;
 
 public class TransferSceneController {
 
@@ -126,7 +127,7 @@ public class TransferSceneController {
         }else {
             store4.get(toAccExistIndex)[2] = String.valueOf(Double.valueOf(store4.get(toAccExistIndex)[2]) + Double.valueOf(transferAmount));
             store4.get(fromAccExistIndex)[2] = String.valueOf(Double.valueOf(store4.get(fromAccExistIndex)[2]) - Double.valueOf(transferAmount)*1.02);
-
+            CreateSceneController.informationAlert("Information","Successful","Transaction Successful!");
             lblFromNewBalance.setDisable(false);
             lblFromNewBalance.setText(String.format("Rs.%,.2f",Double.valueOf(store4.get(fromAccExistIndex)[2])));
             lblToNewBalance.setDisable(false);

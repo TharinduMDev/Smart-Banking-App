@@ -56,13 +56,16 @@ public class DeleteAccountSceneController {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Account Delete Confirmation Alert");
-        alert.setContentText("Are You Sure to Delete This Account");
+        alert.setContentText("Are You Sure to Delete This Account?");
         alert.setHeaderText("Delete Account");
 
         Optional<ButtonType> reply = alert.showAndWait();
         if(reply.get() == ButtonType.OK){
-
-            lblStatus.setVisible(true);
+            CreateSceneController.informationAlert("Information","Successfull",String.format("%s Account Successfully deleted!",txtEnterAccNum.getText()));
+            lblName.setText("Name");
+            lblCurrentAccBalance.setText("000,000,000.00");
+            txtEnterAccNum.setText("SBA-xxxx");
+            txtEnterAccNum.setDisable(true);
             btnDeleteAnother.setDisable(false);
             String[] deletePosition = new String[1];
             store6.set(existIndex,deletePosition);
@@ -97,6 +100,7 @@ public class DeleteAccountSceneController {
     }
 
     public void btnDeleteAnotherOnAction(ActionEvent actionEvent) {
+        txtEnterAccNum.setDisable(false);
         txtEnterAccNum.clear();
         txtEnterAccNum.promptTextProperty();
         lblName.setText("Name");

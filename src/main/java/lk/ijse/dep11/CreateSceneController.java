@@ -20,7 +20,6 @@ import java.util.ArrayList;
 
 public class CreateSceneController {
 
-    public Label lblSuccessful;
     @FXML
     private Button btnAddAccount;
 
@@ -50,19 +49,19 @@ public class CreateSceneController {
         txtName.setDisable(true);
         txtInitialDeposit.setDisable(true);
         btnSave.setDisable(true);
-        lblSuccessful.setVisible(false);
         btnAddAccount.requestFocus();
 
     }
 
     @FXML
     void btnAddAccountOnAction(ActionEvent event) {
-        lblSuccessful.setVisible(false);
         txtAccNum.setText(String.format("SBA-%04d",store1.size()+1));
         txtName.setDisable(false);
         txtInitialDeposit.setDisable(false);
         btnSave.setDisable(false);
         txtName.requestFocus();
+        txtAccNum.setDisable(false);
+        txtAccNum.setEditable(false);
     }
 
     @FXML
@@ -107,7 +106,7 @@ public class CreateSceneController {
             newCustomer [2] = initialDeposit;
 
             store1.add(newCustomer);
-            lblSuccessful.setVisible(true);
+            informationAlert("Information Alert","Successful",String.format("%s Account Successfully Created!",txtAccNum.getText()));
             txtAccNum.clear();
             txtAccNum.promptTextProperty();
             txtAccNum.setDisable(true);
@@ -204,6 +203,15 @@ public class CreateSceneController {
 
     public void txtInitialDepositOnKeyPressed(KeyEvent keyEvent) {
         if(keyEvent.getCode() == KeyCode.ENTER)btnSave.fire();
+    }
+
+    public static void  informationAlert(String title, String header, String content){
+        Alert informationAlert = new Alert(Alert.AlertType.INFORMATION);
+        informationAlert.setTitle(title);
+        informationAlert.setHeaderText(header);
+        informationAlert.setContentText(content);
+        informationAlert.showAndWait();
+
     }
 
 

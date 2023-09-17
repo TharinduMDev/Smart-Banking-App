@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.dep11.CreateSceneController.*;
 
 
 
@@ -117,6 +118,7 @@ public class WithdrawalSceneController {
             lblNewBalance1.setDisable(false);
             lblNewBalance.setDisable(false);
             lblNewBalance.setText(String.format("Rs.%,.2f",Double.valueOf(store3.get(existIndex)[2])));
+            CreateSceneController.informationAlert("Information","Successful","Withdrawal Successful!");
             btnWithdraw.setDisable(false);
             btnEnterAccNum.setDisable(true);
             btnEnterWithdrawAmount.setDisable(true);
