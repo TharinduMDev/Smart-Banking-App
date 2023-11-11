@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootSplash" opacity="0.78" prefHeight="412.0" prefWidth="600.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.SplashSceneController">
+<AnchorPane fx:id="rootSplash" prefHeight="397.0" prefWidth="497.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.SplashSceneController">
    <children>
-      <Label layoutX="167.0" layoutY="14.0" style="-fx-alignment: center;" text="Smart Banking" textFill="#1a62ed">
+      <Label layoutX="125.0" layoutY="14.0" style="-fx-alignment: center;" text="Smart Banking" textFill="#06f822">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Label fx:id="lblLoading" layoutX="54.0" layoutY="347.0" prefHeight="19.0" prefWidth="499.0" style="-fx-alignment: center;" text="Loading" textFill="#1a4eed">
+      <Label fx:id="lblLoading" layoutX="9.0" layoutY="364.0" prefHeight="19.0" prefWidth="499.0" style="-fx-alignment: center;" text="Loading" textFill="#6fff00">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="45.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imgIcon" fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="62.0">
+      <ImageView blendMode="GREEN" fitHeight="200.0" fitWidth="200.0" layoutX="158.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../target/classes/view/Image/bank_78392.png" />
-         </image>
-      </ImageView>
-      <ImageView blendMode="BLUE" fitHeight="76.0" fitWidth="82.0" layoutX="266.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@Image/splash.png" />
+         </image></ImageView>
+      <ImageView blendMode="GREEN" fitHeight="76.0" fitWidth="82.0" layoutX="220.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Image/loadingSplash.gif" />
          </image>
       </ImageView>
    </children>
+   <cursor>
+      <Cursor fx:constant="NONE" />
+   </cursor>
 </AnchorPane>
